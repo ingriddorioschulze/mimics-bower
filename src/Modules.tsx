@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import getModules from './utils'
+
+import Input from '@material-ui/core/Input'
 
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -6,10 +9,8 @@ import TableCell from '@material-ui/core/TableCell'
 import TableContainer from '@material-ui/core/TableContainer'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
-import Paper from '@material-ui/core/Paper'
 
 import Pagination from '@material-ui/lab/Pagination'
-import { findByLabelText } from '@testing-library/react'
 
 export type ModuleData = {
   name: string
@@ -20,43 +21,19 @@ export type ModuleData = {
 
 function Modules() {
   const [modules, setModules] = useState<ModuleData[]>([])
-  const [error, setError] = useState(false)
   const [page, setPage] = React.useState(1)
   const [search, setSearch] = useState('')
   const [loading, setLoading] = useState(true)
   const [sortByStars, setSortByStars] = useState(false)
-
   const itemsPerPage = 5
 
   useEffect(() => {
-    const query = new URLSearchParams({
-      page: page.toFixed(0),
-      per_page: itemsPerPage.toFixed(0),
-      q: search.toString(),
-      sort: sortByStars ? 'stars' : '',
-    }).toString()
-
-    fetch('https://libraries.io/api/bower-search?' + query)
-      .then((response) => {
-        if (response.ok) return response.json()
-        throw new Error('something went wrong in the modules request')
-      })
-      .then((modules: ModuleData[]) => {
-        setLoading(false)
-        modules.forEach((module) => {
-          const match = module.repository_url.match(/.*\/(.*)\/(.*)$/)
-          if (match !== null) {
-            module.owner = match[1]
-          }
-        })
-        setModules(modules)
-      })
-      .catch((error) => {
-        setError(error.message)
-      })
+    setLoading(true)
+    getModules(page, itemsPerPage, search, sortByStars).then((modules) => {
+      setModules(modules)
+      setLoading(false)
+    })
   }, [page, search, sortByStars])
-
-  if (error) return <h1>{error}</h1>
 
   const handlePaginationChange = (
     event: React.ChangeEvent<unknown>,
@@ -73,22 +50,20 @@ function Modules() {
   return (
     <div>
       <div className="searchbar-container">
-        <input
+        <Input
           type="search"
           id="search"
           name="search"
           placeholder="Search..."
           value={search}
           onChange={handleSearchChange}
-        ></input>
+          fullWidth={true}
+          margin="dense"
+          multiline={true}
+        ></Input>
       </div>
       <div className="modules-container">
-        {loading && <h1>Loading search results</h1>}
-        {!loading && modules.length === 0 && (
-          <h1>No results, please try different query</h1>
-        )}
-        {error && <div>Error message</div>}
-        <TableContainer component={Paper}>
+        <TableContainer>
           <Table aria-label="modules table">
             <TableHead>
               <TableRow>
@@ -98,14 +73,23 @@ function Modules() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {!error &&
-                modules.map((module) => (
-                  <TableRow key={module.name}>
-                    <TableCell>{module.name}</TableCell>
-                    <TableCell>{module.owner}</TableCell>
-                    <TableCell>{module.stars}</TableCell>
-                  </TableRow>
-                ))}
+              {loading && (
+                <tr>
+                  <td>Loading search results</td>
+                </tr>
+              )}
+              {!loading && modules.length === 0 && (
+                <tr>
+                  <td>No results, please try different query</td>
+                </tr>
+              )}
+              {modules.map((module) => (
+                <TableRow key={module.name}>
+                  <TableCell>{module.name}</TableCell>
+                  <TableCell>{module.owner}</TableCell>
+                  <TableCell>{module.stars}</TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </TableContainer>
