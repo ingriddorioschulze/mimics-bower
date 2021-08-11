@@ -13,14 +13,14 @@ import TableRow from '@material-ui/core/TableRow'
 
 import Pagination from '@material-ui/lab/Pagination'
 
-export type ModuleData = {
+export interface ModuleData {
   name: string
   stars: number
   repository_url: string
   owner: string
 }
 
-function Modules() {
+function Content() {
   const [modules, setModules] = useState<ModuleData[]>([])
   const [page, setPage] = React.useState(1)
   const [search, setSearch] = useState('')
@@ -66,15 +66,17 @@ function Modules() {
           margin="dense"
           multiline={true}
         ></Input>
+        <div className="checkbox-container">
+          <p>Sort by Stars</p>
+          <Checkbox
+            checked={sortByStars}
+            onChange={handleCheckboxChange}
+            data-testid="input-checkbox"
+            inputProps={{ 'aria-label': 'sort checkbox' }}
+          />
+        </div>
       </div>
-      <div className="checkbox-container">
-        <p>Sort by Stars</p>
-        <Checkbox
-          checked={sortByStars}
-          onChange={handleCheckboxChange}
-          inputProps={{ 'aria-label': 'primary checkbox' }}
-        />
-      </div>
+
       <div className="modules-container">
         <TableContainer>
           <Table aria-label="modules table">
@@ -86,15 +88,9 @@ function Modules() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {loading && (
-                <tr>
-                  <td>Loading search results</td>
-                </tr>
-              )}
+              {loading && <h1>Loading search results</h1>}
               {!loading && modules.length === 0 && (
-                <tr>
-                  <td>No results, please try different query</td>
-                </tr>
+                <h1>No results, please try different query</h1>
               )}
               {modules.map((module) => (
                 <TableRow key={module.name}>
@@ -120,4 +116,4 @@ function Modules() {
   )
 }
 
-export default Modules
+export default Content

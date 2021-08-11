@@ -1,5 +1,4 @@
 .App {
-  text-align: center;
 }
 
 .App-header {
@@ -17,12 +16,12 @@
   display: flex;
 }
 
-  .leftmenu {
-    display: flex;
-    flex-direction: column;
-  }
+.leftmenu {
+  display: flex;
+  flex-direction: column;
+}
 
-  .content {
-    display: flex;
-    flex-direction: column;
-  }
+.content {
+  display: flex;
+  flex-direction: column;
+}

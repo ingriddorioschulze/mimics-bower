@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css'
-import Modules from './Modules'
+import Menu from './Menu'
+import Content from './Content'
 
 function App() {
   return (
@@ -10,9 +11,11 @@ function App() {
       </header>
 
       <div className="container">
-        <div className="leftmenu">left menu</div>
+        <div className="menu">
+          <Menu />
+        </div>
         <div className="content">
-          <Modules />
+          <Content />
         </div>
       </div>
 
