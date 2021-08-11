@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from 'react'
+
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableContainer from '@material-ui/core/TableContainer'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import Paper from '@material-ui/core/Paper'
+
 import Pagination from '@material-ui/lab/Pagination'
+import { findByLabelText } from '@testing-library/react'
 
 export type ModuleData = {
   name: string
@@ -72,20 +82,33 @@ function Modules() {
           onChange={handleSearchChange}
         ></input>
       </div>
-      <div className="search-results-container">
+      <div className="modules-container">
         {loading && <h1>Loading search results</h1>}
         {!loading && modules.length === 0 && (
           <h1>No results, please try different query</h1>
         )}
         {error && <div>Error message</div>}
-        {!error &&
-          modules.map((module) => (
-            <div key={module.name}>
-              <p>{module.name}</p>
-              <p>{module.stars}</p>
-              <p>{module.owner}</p>
-            </div>
-          ))}
+        <TableContainer component={Paper}>
+          <Table aria-label="modules table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Name</TableCell>
+                <TableCell>Owner</TableCell>
+                <TableCell>Stars</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {!error &&
+                modules.map((module) => (
+                  <TableRow key={module.name}>
+                    <TableCell>{module.name}</TableCell>
+                    <TableCell>{module.owner}</TableCell>
+                    <TableCell>{module.stars}</TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </div>
       <div className="pagination">
         <Pagination
