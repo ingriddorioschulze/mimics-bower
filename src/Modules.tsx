@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import getModules from './utils'
 
 import Input from '@material-ui/core/Input'
+import Checkbox from '@material-ui/core/Checkbox'
 
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -47,6 +48,10 @@ function Modules() {
     setSearch(event.currentTarget.value)
   }
 
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSortByStars(event.target.checked)
+  }
+
   return (
     <div>
       <div className="searchbar-container">
@@ -61,6 +66,14 @@ function Modules() {
           margin="dense"
           multiline={true}
         ></Input>
+      </div>
+      <div className="checkbox-container">
+        <p>Sort by Stars</p>
+        <Checkbox
+          checked={sortByStars}
+          onChange={handleCheckboxChange}
+          inputProps={{ 'aria-label': 'primary checkbox' }}
+        />
       </div>
       <div className="modules-container">
         <TableContainer>
