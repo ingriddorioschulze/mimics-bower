@@ -62,7 +62,7 @@ function Modules() {
 
   return (
     <div>
-      <div>
+      <div className="searchbar-container">
         <input
           type="search"
           id="search"
@@ -72,28 +72,30 @@ function Modules() {
           onChange={handleSearchChange}
         ></input>
       </div>
-      {loading && <div>Loading search results</div>}
-      {!error && modules.length > 0 ? (
-        modules.map((module) => (
-          <div key={module.name}>
-            <p>{module.name}</p>
-            <p>{module.stars}</p>
-            <p>{module.owner}</p>
-          </div>
-        ))
-      ) : (
-        <h1>No results, please try different query</h1>
-      )}
-
-      {error && <div>Error message</div>}
-
-      <Pagination
-        count={100}
-        page={page}
-        siblingCount={2}
-        onChange={handlePaginationChange}
-        showLastButton
-      />
+      <div className="search-results-container">
+        {loading && <h1>Loading search results</h1>}
+        {!loading && modules.length === 0 && (
+          <h1>No results, please try different query</h1>
+        )}
+        {error && <div>Error message</div>}
+        {!error &&
+          modules.map((module) => (
+            <div key={module.name}>
+              <p>{module.name}</p>
+              <p>{module.stars}</p>
+              <p>{module.owner}</p>
+            </div>
+          ))}
+      </div>
+      <div className="pagination">
+        <Pagination
+          count={100}
+          page={page}
+          siblingCount={2}
+          onChange={handlePaginationChange}
+          showLastButton
+        />
+      </div>
     </div>
   )
 }
