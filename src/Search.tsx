@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import Input from '@material-ui/core/Input'
 import Checkbox from '@material-ui/core/Checkbox'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
 
 const StyledInput = styled(Input)`
   border: 0;
@@ -42,12 +43,16 @@ function Search(props: SearchProperties) {
         disableUnderline={true}
       ></StyledInput>
       <div className="checkbox-container">
-        <Checkbox
-          checked={props.sortByStars}
-          onChange={handleCheckboxChange}
-          data-testid="input-checkbox"
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={props.sortByStars}
+              onChange={handleCheckboxChange}
+              data-testid="input-checkbox"
+            />
+          }
+          label="Sort by Stars"
         />
-        <span>Sort by Stars</span>
       </div>
     </div>
   )
