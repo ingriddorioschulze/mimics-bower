@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+
 import getModules from './utils'
 
 import Input from '@material-ui/core/Input'
@@ -13,10 +15,15 @@ import TableRow from '@material-ui/core/TableRow'
 
 import Pagination from '@material-ui/lab/Pagination'
 
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0 30px;
+`
+
 export interface ModuleData {
   name: string
   stars: number
-  repository_url: string
   owner: string
 }
 
@@ -54,7 +61,7 @@ function Content() {
   }
 
   return (
-    <div>
+    <ContentWrapper>
       <div className="searchbar-container">
         <Input
           type="search"
@@ -64,16 +71,14 @@ function Content() {
           value={search}
           onChange={handleSearchChange}
           fullWidth={true}
-          margin="dense"
-          multiline={true}
         ></Input>
         <div className="checkbox-container">
-          <p>Sort by Stars</p>
           <Checkbox
             checked={sortByStars}
             onChange={handleCheckboxChange}
             data-testid="input-checkbox"
           />
+          <span>Sort by Stars</span>
         </div>
       </div>
 
@@ -118,7 +123,7 @@ function Content() {
           showLastButton
         />
       </div>
-    </div>
+    </ContentWrapper>
   )
 }
 
