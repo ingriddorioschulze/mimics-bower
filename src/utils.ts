@@ -1,9 +1,16 @@
+
+export type ModuleData = {
+  name: string
+  stars: number
+  owner: string
+}
+
 export default async function getModules(
   page: number,
   itemsPerPage: number,
   search: string,
   sortByStars: boolean,
-) {
+) : Promise<ModuleData[]> {
 
   const query = new URLSearchParams({
     page: page.toFixed(0),
