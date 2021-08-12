@@ -2,14 +2,12 @@ import React from 'react'
 import './App.css'
 import Menu from './Menu'
 import Content from './Content'
+import Header from './Header'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>mimics bower</h1>
-      </header>
-
+      <Header />
       <div className="container">
         <div className="menu">
           <Menu />
@@ -18,7 +16,6 @@ function App() {
           <Content />
         </div>
       </div>
-
       <footer>
         <p>footer</p>
       </footer>
