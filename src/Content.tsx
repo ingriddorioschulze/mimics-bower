@@ -22,7 +22,7 @@ export interface ModuleData {
 
 function Content() {
   const [modules, setModules] = useState<ModuleData[]>([])
-  const [page, setPage] = React.useState(1)
+  const [page, setPage] = useState(1)
   const [search, setSearch] = useState('')
   const [loading, setLoading] = useState(true)
   const [sortByStars, setSortByStars] = useState(false)
@@ -30,6 +30,7 @@ function Content() {
 
   useEffect(() => {
     setLoading(true)
+    setModules([])
     getModules(page, itemsPerPage, search, sortByStars).then((modules) => {
       setModules(modules)
       setLoading(false)
@@ -72,7 +73,6 @@ function Content() {
             checked={sortByStars}
             onChange={handleCheckboxChange}
             data-testid="input-checkbox"
-            inputProps={{ 'aria-label': 'sort checkbox' }}
           />
         </div>
       </div>
@@ -88,12 +88,18 @@ function Content() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {loading && <h1>Loading search results</h1>}
+              {loading && (
+                <tr>
+                  <td>Loading search results</td>
+                </tr>
+              )}
               {!loading && modules.length === 0 && (
-                <h1>No results, please try different query</h1>
+                <tr>
+                  <td>No results, please try different query</td>
+                </tr>
               )}
               {modules.map((module) => (
-                <TableRow key={module.name}>
+                <TableRow key={module.name} data-testid="module-item">
                   <TableCell>{module.name}</TableCell>
                   <TableCell>{module.owner}</TableCell>
                   <TableCell>{module.stars}</TableCell>

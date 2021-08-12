@@ -13,13 +13,3 @@ test('should render the search bars', () => {
   const searchElement = screen.getByPlaceholderText('Search...')
   expect(searchElement).toBeInTheDocument()
 })
-
-// test('should render the checkbox text', () => {
-//   const checkboxElement = screen.getByText('Sort by Stars')
-//   expect(checkboxElement).toBeInTheDocument()
-// })
-
-//renders the modules after loading
-//search brings the correct result
-//sort by starts brings the correct results
-//show owner name is correct
