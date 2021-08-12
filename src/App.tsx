@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import Menu from './Menu'
+import Sidebar from './Sidebar'
 import Content from './Content'
 import Header from './Header'
 
@@ -10,7 +10,7 @@ function App() {
       <Header />
       <div className="container">
         <div className="menu">
-          <Menu />
+          <Sidebar />
         </div>
         <div className="content">
           <Content />
