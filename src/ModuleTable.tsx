@@ -29,6 +29,8 @@ const StyledTableCell = styled(TableCell)`
     color: red;
   }
 `
+const StyledTableCellMessage = styled(TableCell)``
+
 type ModuleTableProperties = {
   modules: ModuleData[]
   loading: boolean
@@ -47,14 +49,18 @@ function ModuleTable(props: ModuleTableProperties) {
         </TableHead>
         <TableBody>
           {props.loading && (
-            <tr>
-              <td>Loading search results</td>
-            </tr>
+            <TableRow>
+              <StyledTableCellMessage className="message">
+                Loading search results
+              </StyledTableCellMessage>
+            </TableRow>
           )}
           {!props.loading && props.modules.length === 0 && (
-            <tr>
-              <td>No results, please try different query</td>
-            </tr>
+            <TableRow>
+              <StyledTableCellMessage className="message">
+                No results, please try different query
+              </StyledTableCellMessage>
+            </TableRow>
           )}
           {props.modules.map((module) => (
             <TableRow key={module.name} data-testid="module-item">

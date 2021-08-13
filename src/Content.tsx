@@ -13,6 +13,13 @@ const ContentWrapper = styled.div`
   padding: 0 30px;
 `
 
+const StyledPagination = styled(Pagination)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+`
+
 function Content() {
   const [modules, setModules] = useState<ModuleData[]>([])
   const [page, setPage] = useState(1)
@@ -46,7 +53,7 @@ function Content() {
         setSortByStars={setSortByStars}
       />
       <ModuleTable modules={modules} loading={loading} />
-      <Pagination
+      <StyledPagination
         count={100}
         page={page}
         siblingCount={2}

@@ -12,10 +12,21 @@ const AppWrapper = styled.div`
 
   .container {
     display: grid;
-    grid-template-columns: 250px auto;
+    grid-row: start;
+    grid-template-columns: 200px auto;
     grid-auto-flow: column;
     column-gap: 1rem;
     row-gap: 10px;
+  }
+
+  @media screen and (max-width: 600px) {
+    .container {
+      display: grid;
+      grid-column: start;
+      justify-self: center;
+      grid-template-columns: 100% auto;
+      column-gap: 0;
+    }
   }
 `
 

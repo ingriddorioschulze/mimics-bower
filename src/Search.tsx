@@ -5,6 +5,10 @@ import Input from '@material-ui/core/Input'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 
+const SearchWrapper = styled.div`
+  padding: 25px 0;
+`
+
 const StyledInput = styled(Input)`
   border: 0;
   box-shadow: 0 0 1px #ccc;
@@ -31,7 +35,7 @@ function Search(props: SearchProperties) {
   }
 
   return (
-    <div>
+    <SearchWrapper>
       <StyledInput
         type="search"
         id="search"
@@ -54,7 +58,7 @@ function Search(props: SearchProperties) {
           label="Sort by Stars"
         />
       </div>
-    </div>
+    </SearchWrapper>
   )
 }
 
