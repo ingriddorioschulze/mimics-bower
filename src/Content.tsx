@@ -9,15 +9,15 @@ import Search from './Search'
 
 const ContentWrapper = styled.div`
   display: flex;
-  flex-direction: column;
   padding: 0 30px;
+  flex-direction: column;
 `
 
 const StyledPagination = styled(Pagination)`
   display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 30px 0;
+  align-items: center;
+  justify-content: center;
 `
 
 function Content() {

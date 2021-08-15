@@ -14,20 +14,9 @@ const StyledTableContainer = styled(TableContainer)`
   box-shadow: 0 0 1px #ccc;
 `
 
-const StyledTableCellHead = styled(TableCell)`
-  .MuiTableCell-head {
-    font-size: 16px;
-    font-weight: bold;
-    color: red;
-  }
-`
+const StyledTableCellHead = styled(TableCell)``
 const StyledTableCell = styled(TableCell)`
   padding: 20px;
-
-  .MuiTableCell-root {
-    font-size: 34px;
-    color: red;
-  }
 `
 const StyledTableCellMessage = styled(TableCell)``
 

@@ -6,9 +6,10 @@ const MenuContainer = styled.div`
   flex-direction: column;
 
   ul {
-    list-style-type: none;
     margin: 0;
+    padding-top: 20px;
     padding-left: 15px;
+    list-style-type: none;
   }
 
   .sidebar-item {
@@ -17,8 +18,10 @@ const MenuContainer = styled.div`
 
   .sidebar-link {
     font-size: 18px;
+    color: #00acee;
     font-weight: bold;
     text-decoration: none;
+    font-family: Roboto, sans-serif;
   }
 
   @media screen and (max-width: 600px) {

@@ -1,26 +1,45 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const HeaderContainer = styled.div`
+const HeaderContainer = styled.header`
+  display: flex;
+  min-height: 130px;
+  align-items: center;
+  background-color: #ffcc2f;
+  justify-content: space-between;
+
   .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px 20px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .header-title {
+    margin: 0;
+    font-size: 64px;
+    color: #543729;
+    font-weight: bold;
+    padding-left: 15px;
+    font-family: Roboto, sans-serif;
   }
 
   .nav-link {
     padding: 10px;
-    text-decoration: none;
-    font-weight: bold;
     font-size: 16px;
+    color: #2baf2b;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: Roboto, sans-serif;
+  }
+  .nav-link-blue {
+    color: #00acee;
   }
 
-  @media screen and (max-width: 600px) {
-    .navbar {
-      display: flex;
-      flex-direction: column;
-      text-align: center;
+  @media screen and (max-width: 800px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .header-title {
+      font-size: 32px;
     }
   }
 `
@@ -28,25 +47,23 @@ const HeaderContainer = styled.div`
 function Header() {
   return (
     <HeaderContainer>
-      <header className="header">
-        <nav className="navbar">
-          <h1>Mimics Bower</h1>
-          <div className="links">
-            <a className="nav-link" href="/">
-              Docs
-            </a>
-            <a className="nav-link" href="/">
-              Search packages
-            </a>
-            <a className="nav-link" href="/">
-              Blog
-            </a>
-            <a className="nav-link" href="/">
-              Stats
-            </a>
-          </div>
-        </nav>
-      </header>
+      <h1 className="header-title">Mimics Bower</h1>
+      <nav className="navbar">
+        <div className="links">
+          <a className="nav-link nav-link-blue" href="/">
+            Docs
+          </a>
+          <a className="nav-link" href="/">
+            Search packages
+          </a>
+          <a className="nav-link" href="/">
+            Blog
+          </a>
+          <a className="nav-link" href="/">
+            Stats
+          </a>
+        </div>
+      </nav>
     </HeaderContainer>
   )
 }
