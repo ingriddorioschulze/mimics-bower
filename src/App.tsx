@@ -4,28 +4,31 @@ import styled from 'styled-components'
 import Sidebar from './Sidebar'
 import Content from './Content'
 import Header from './Header'
+import Footer from './Footer'
 
 const AppWrapper = styled.div`
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 
   .container {
+    row-gap: 10px;
     display: grid;
     grid-row: start;
-    grid-template-columns: 200px auto;
-    grid-auto-flow: column;
+    min-height: auto;
     column-gap: 1rem;
-    row-gap: 10px;
+    padding-bottom: 40px;
+    grid-auto-flow: column;
+    grid-template-columns: 200px auto;
   }
 
   @media screen and (max-width: 600px) {
     .container {
+      column-gap: 0;
       display: grid;
       grid-column: start;
       justify-self: center;
       grid-template-columns: 100% auto;
-      column-gap: 0;
     }
   }
 `
@@ -38,9 +41,7 @@ function App() {
         <Sidebar />
         <Content />
       </div>
-      <footer>
-        <p>footer</p>
-      </footer>
+      <Footer />
     </AppWrapper>
   )
 }
