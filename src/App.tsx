@@ -15,10 +15,10 @@ const AppWrapper = styled.div`
     row-gap: 10px;
     display: grid;
     grid-row: start;
-    min-height: auto;
     column-gap: 1rem;
     padding-bottom: 40px;
     grid-auto-flow: column;
+    min-height: calc(100vh - 70px);
     grid-template-columns: 200px auto;
   }
 
