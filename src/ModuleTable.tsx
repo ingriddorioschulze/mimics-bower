@@ -13,12 +13,9 @@ const StyledTableContainer = styled(TableContainer)`
   border: 0;
   box-shadow: 0 0 1px #ccc;
 `
-
-const StyledTableCellHead = styled(TableCell)``
 const StyledTableCell = styled(TableCell)`
   padding: 20px;
 `
-const StyledTableCellMessage = styled(TableCell)``
 
 type ModuleTableProperties = {
   modules: ModuleData[]
@@ -31,24 +28,24 @@ function ModuleTable(props: ModuleTableProperties) {
       <Table aria-label="modules table">
         <TableHead>
           <TableRow>
-            <StyledTableCellHead>Name</StyledTableCellHead>
-            <StyledTableCellHead>Owner</StyledTableCellHead>
-            <StyledTableCellHead>Stars</StyledTableCellHead>
+            <StyledTableCell>Name</StyledTableCell>
+            <StyledTableCell>Owner</StyledTableCell>
+            <StyledTableCell>Stars</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {props.loading && (
             <TableRow>
-              <StyledTableCellMessage className="message">
+              <StyledTableCell align="center" colSpan={3}>
                 Loading search results
-              </StyledTableCellMessage>
+              </StyledTableCell>
             </TableRow>
           )}
           {!props.loading && props.modules.length === 0 && (
             <TableRow>
-              <StyledTableCellMessage className="message">
+              <StyledTableCell align="center" colSpan={3}>
                 No results, please try different query
-              </StyledTableCellMessage>
+              </StyledTableCell>
             </TableRow>
           )}
           {props.modules.map((module) => (
