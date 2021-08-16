@@ -16,9 +16,8 @@ const AppWrapper = styled.div`
     display: grid;
     grid-row: start;
     column-gap: 1rem;
-    padding-bottom: 40px;
     grid-auto-flow: column;
-    min-height: calc(100vh - 70px);
+    height: calc(100vh - 200px);
     grid-template-columns: 200px auto;
   }
 
