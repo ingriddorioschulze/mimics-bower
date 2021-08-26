@@ -12,7 +12,7 @@ const AppWrapper = styled.div`
   box-sizing: border-box;
 `
 
-const Container = styled.div`
+const AppContainer = styled.div`
   row-gap: 10px;
   display: grid;
   grid-row: start;
@@ -26,7 +26,7 @@ const Container = styled.div`
     display: grid;
     grid-column: start;
     justify-self: center;
-    grid-template-columns: 100% auto;
+    grid-template-columns: auto;
   }
 `
 
@@ -34,10 +34,10 @@ const App: React.FC = (): JSX.Element => {
   return (
     <AppWrapper>
       <Header />
-      <Container>
+      <AppContainer>
         <Sidebar />
         <Content />
-      </Container>
+      </AppContainer>
       <Footer />
     </AppWrapper>
   )

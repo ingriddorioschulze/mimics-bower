@@ -12,9 +12,6 @@ const HeaderContainer = styled.header`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    .header-title {
-      font-size: 32px;
-    }
   }
 `
 const Navbar = styled.nav`

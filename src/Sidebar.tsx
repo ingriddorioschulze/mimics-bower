@@ -4,6 +4,10 @@ import styled from 'styled-components'
 const MenuContainer = styled.div`
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 `
 
 const SidebarList = styled.ul`
@@ -25,10 +29,6 @@ const SidebarLink = styled.a`
   font-weight: bold;
   text-decoration: none;
   font-family: Roboto, sans-serif;
-
-  @media screen and (max-width: 600px) {
-    display: none;
-  }
 `
 
 const sidebarLinks = [
