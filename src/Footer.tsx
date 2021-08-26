@@ -17,7 +17,7 @@ const FooterWrapper = styled.footer`
   }
 `
 
-function Footer() {
+const Footer: React.FC = (): JSX.Element => {
   return (
     <FooterWrapper>
       <h1 className="footer-text">Mimics Bower</h1>

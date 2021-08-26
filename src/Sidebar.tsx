@@ -29,7 +29,7 @@ const MenuContainer = styled.div`
   }
 `
 
-function Sidebar() {
+const Sidebar: React.FC = (): JSX.Element => {
   return (
     <MenuContainer>
       <ul>

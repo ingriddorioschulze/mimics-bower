@@ -32,7 +32,7 @@ const AppWrapper = styled.div`
   }
 `
 
-function App() {
+const App: React.FC = (): JSX.Element => {
   return (
     <AppWrapper>
       <Header />

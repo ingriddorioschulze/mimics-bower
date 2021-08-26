@@ -25,7 +25,9 @@ type SearchProperties = {
   setSortByStars: (sortByStars: boolean) => unknown
 }
 
-function Search(props: SearchProperties) {
+const Search: React.FC<SearchProperties> = (
+  props: SearchProperties,
+): JSX.Element => {
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     props.setSearch(event.currentTarget.value)
   }

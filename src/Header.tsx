@@ -44,7 +44,7 @@ const HeaderContainer = styled.header`
   }
 `
 
-function Header() {
+const Header: React.FC = (): JSX.Element => {
   return (
     <HeaderContainer>
       <h1 className="header-title">Mimics Bower</h1>

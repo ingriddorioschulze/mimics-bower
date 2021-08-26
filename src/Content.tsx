@@ -20,7 +20,7 @@ const StyledPagination = styled(Pagination)`
   justify-content: center;
 `
 
-function Content() {
+const Content: React.FC = (): JSX.Element => {
   const [modules, setModules] = useState<ModuleData[]>([])
   const [page, setPage] = useState(1)
   const [search, setSearch] = useState('')
