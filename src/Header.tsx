@@ -30,9 +30,6 @@ const HeaderContainer = styled.header`
     text-decoration: none;
     font-family: Roboto, sans-serif;
   }
-  .nav-link-blue {
-    color: #00acee;
-  }
 
   @media screen and (max-width: 800px) {
     display: flex;
@@ -44,24 +41,19 @@ const HeaderContainer = styled.header`
   }
 `
 
+const headerLinks = ['Docs', 'Search packages', 'Blog', 'Stats']
+
 const Header: React.FC = (): JSX.Element => {
   return (
     <HeaderContainer>
       <h1 className="header-title">Mimics Bower</h1>
       <nav className="navbar">
         <div className="links">
-          <a className="nav-link nav-link-blue" href="/">
-            Docs
-          </a>
-          <a className="nav-link" href="/">
-            Search packages
-          </a>
-          <a className="nav-link" href="/">
-            Blog
-          </a>
-          <a className="nav-link" href="/">
-            Stats
-          </a>
+          {headerLinks.map((headerLinks, index) => (
+            <a className="nav-link" key={index} href="/">
+              {headerLinks}
+            </a>
+          ))}
         </div>
       </nav>
     </HeaderContainer>
