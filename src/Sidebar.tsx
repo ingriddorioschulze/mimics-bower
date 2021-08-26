@@ -4,27 +4,27 @@ import styled from 'styled-components'
 const MenuContainer = styled.div`
   display: flex;
   flex-direction: column;
+`
 
-  ul {
-    margin: 0;
-    padding-top: 20px;
-    padding-left: 15px;
-    list-style-type: none;
-  }
+const SidebarList = styled.ul`
+  margin: 0;
+  padding-top: 20px;
+  padding-left: 15px;
+  list-style-type: none;
+`
 
-  .sidebar-item {
-    display: flex;
-    flex-direction: column;
-  }
+const SidebarItem = styled.li`
+  display: flex;
+  flex-direction: column;
+`
 
-  .sidebar-link {
-    padding: 5px;
-    font-size: 18px;
-    color: #00acee;
-    font-weight: bold;
-    text-decoration: none;
-    font-family: Roboto, sans-serif;
-  }
+const SidebarLink = styled.a`
+  padding: 5px;
+  font-size: 18px;
+  color: #00acee;
+  font-weight: bold;
+  text-decoration: none;
+  font-family: Roboto, sans-serif;
 
   @media screen and (max-width: 600px) {
     display: none;
@@ -47,15 +47,15 @@ const sidebarLinks = [
 const Sidebar: React.FC = (): JSX.Element => {
   return (
     <MenuContainer>
-      <ul>
-        <li className="sidebar-item">
+      <SidebarList>
+        <SidebarItem>
           {sidebarLinks.map((sidebarLink, index) => (
-            <a className="sidebar-link" key={index} href="/">
+            <SidebarLink key={index} href="/">
               {sidebarLink}
-            </a>
+            </SidebarLink>
           ))}
-        </li>
-      </ul>
+        </SidebarItem>
+      </SidebarList>
     </MenuContainer>
   )
 }

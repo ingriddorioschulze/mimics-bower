@@ -7,20 +7,20 @@ const FooterWrapper = styled.footer`
   align-items: center;
   justify-content: center;
   background-color: #2188b6;
+`
 
-  .footer-text {
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    font-family: Roboto, sans-serif;
-  }
+const FooterText = styled.h1`
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  font-family: Roboto, sans-serif;
 `
 
 const Footer: React.FC = (): JSX.Element => {
   return (
     <FooterWrapper>
-      <h1 className="footer-text">Mimics Bower</h1>
+      <FooterText>Mimics Bower</FooterText>
     </FooterWrapper>
   )
 }
