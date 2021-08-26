@@ -4,6 +4,7 @@ export type ModuleData = {
   name: string
   stars: number
   owner: string
+  repository_url: string
 }
 
 export default async function getModules(
@@ -20,15 +21,12 @@ export default async function getModules(
     sort: sortByStars ? 'stars' : '',
   }).toString()
 
-  return axios.get('https://libraries.io/api/bower-search?' + query)
-    
-    .then((response) => {
-      response.data.forEach((module:any) => {
-        const match = module.repository_url.match(/.*\/(.*)\/(.*)$/)
-        if (match !== null) {
-          module.owner = match[1]
-        }
-      })
-      return response.data
-    })
+  const response = await axios.get<ModuleData[]>(`https://libraries.io/api/bower-search?${query}`)
+  response.data.forEach((module: ModuleData) => {
+    const match = module.repository_url.match(/.*\/(.*)\/(.*)$/)
+    if (match !== null) {
+      module.owner = match[1]
+    }
+  })
+  return response.data
 }
