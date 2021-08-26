@@ -13,10 +13,12 @@ const MenuContainer = styled.div`
   }
 
   .sidebar-item {
-    padding: 5px;
+    display: flex;
+    flex-direction: column;
   }
 
   .sidebar-link {
+    padding: 5px;
     font-size: 18px;
     color: #00acee;
     font-weight: bold;
@@ -29,59 +31,29 @@ const MenuContainer = styled.div`
   }
 `
 
+const sidebarLinks = [
+  'Home',
+  'Install Bower',
+  'Getting started',
+  '@bower',
+  'Creating Packages',
+  'API',
+  'Configuration',
+  'Pluggable Resolvers',
+  'Tools',
+  'About',
+]
+
 const Sidebar: React.FC = (): JSX.Element => {
   return (
     <MenuContainer>
       <ul>
         <li className="sidebar-item">
-          <a className="sidebar-link" href="/">
-            Home
-          </a>
-        </li>
-        <li className="sidebar-item">
-          <a className="sidebar-link" href="/">
-            Install Bower
-          </a>
-        </li>
-        <li className="sidebar-item">
-          <a className="sidebar-link" href="/">
-            Getting started
-          </a>
-        </li>
-        <li className="sidebar-item">
-          <a className="sidebar-link" href="/">
-            @bower
-          </a>
-        </li>
-        <li className="sidebar-item">
-          <a className="sidebar-link" href="/">
-            Creating Packages
-          </a>
-        </li>
-        <li className="sidebar-item">
-          <a className="sidebar-link" href="/">
-            API
-          </a>
-        </li>
-        <li className="sidebar-item">
-          <a className="sidebar-link" href="/">
-            Configuration
-          </a>
-        </li>
-        <li className="sidebar-item">
-          <a className="sidebar-link" href="/">
-            Pluggable Resolvers
-          </a>
-        </li>
-        <li className="sidebar-item">
-          <a className="sidebar-link" href="/">
-            Tools
-          </a>
-        </li>
-        <li className="sidebar-item">
-          <a className="sidebar-link" href="/">
-            About
-          </a>
+          {sidebarLinks.map((sidebarLink, index) => (
+            <a className="sidebar-link" key={index} href="/">
+              {sidebarLink}
+            </a>
+          ))}
         </li>
       </ul>
     </MenuContainer>
